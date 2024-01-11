@@ -4,150 +4,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Impact:wght@condensed&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
     <style>
         body {
             background-color: black;
             margin: 0;
-            font-size: 24px; /* Increased font size */
-            font-family: 'Impact', sans-serif; /* Use Impact Condensed font */
+            font-size: 24px;
+            font-family: 'Press Start 2P', cursive; /* Use Press Start 2P font */
+            text-transform: uppercase;
         }
+		.image-container {
+			position: relative;
+		}
 
-        .image-container {
-            position: relative;
-        }
+		.image-container img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+			width: 100vw;
+			height: auto;
+			transform-origin: top left;
+		}
 
-        .image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: none;
-            width: 120vw;
-            height: auto;
-            transform-origin: top left;
-        }
+		#initialImage,
+		#image01,
+		#image02,
+		#image03,
+		#image04,
+		#image05,
+		#image06,
+		#image07,
+		#image08,
+		#image09,
+		#image10,
+		#image11,
+		#image12,
+		#image13,
+		#image14,
+		#image15,
+		#image16,
+		#image17,
+		#image18 {
+			width: 67vw;
+		}
 
-        #initialImage,
-        #image1,
-        #image2,
-        #image3,
-        #image4,
-        #image5,
-        #image6,
-        #image7,
-        #image8,
-        #image9,
-        #image10,
-        #image11,
-        #image12,
-        #image13,
-        #image14,
-        #image15,
-        #image16 {
-            width: 78vw;
-        }
+		button {
+			width: 220px;
+			height: 66px;
+			margin-top: 10px;
+			font-size: 19px;
+			font-family: 'Press Start 2P', cursive;
+			transition: background-color 0.3s;
+		}
 
-        button {
-            width: 220px;
-            height: 66px;
-            margin-top: 10px;
-            font-size: 27px; /* Increased font size */
-            font-family: 'Impact', sans-serif; /* Use Impact Condensed font */
-            transition: background-color 0.3s; /* Smooth transition for background color change */
-        }
+		.top-right-buttons {
+			position: fixed;
+			top: 10px;
+			right: 10px;
+			display: flex;
+			flex-direction: row;
+			z-index: 2;
+		}
 
-        .top-right-buttons {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            flex-direction: row; /* Display buttons side by side */
-        }
+		.button-group {
+			margin-right: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			z-index: 2;
+		}
 
-        .button-group {
-            margin-right: 20px; /* Adjust the spacing between the button groups */
-            display: flex; /* Display buttons in a row within the group */
-            flex-direction: column; /* Display buttons in a column within the group */
-            align-items: center; /* Center align buttons */
-        }
+		.toggle-container {
+			display: flex;
+			align-items: center;
+			margin-bottom: 5px;
+			margin-right: 5px;
+			flex-wrap: wrap;
+		}
 
-        .toggle-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            margin-right: 10px; /* Add margin to create space between buttons */
-            flex-wrap: wrap; /* Each button in its own row */
-        }
+		.button-label {
+			color: white;
+			margin-bottom: 10px;
+			font-size: 30px;
+			font-family: 'Impact', sans-serif;
+		}
 
-        .button-label {
-            color: white;
-            margin-bottom: 10px; /* Increased margin for spacing */
-            font-size: 30px; /* Further increased font size */
-            font-family: 'Impact', sans-serif; /* Use Impact Condensed font */
-        }
+		.bottom-right-buttons {
+			position: fixed;
+			bottom: 10px;
+			right: 10px;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+		}
 
-        .activated-buttons-container {
-            position: fixed;
-			align-items: right;
-            bottom: 300px; /* Adjusted position from bottom */
-            right: 20px;
-            display: flex;
-            color: white;
-            font-size: 32px; /* Increased font size */
-        }
+		#scaleUp,
+		#scaleDown,
+		#magnifyGlass {
+			width: 60px;
+			height: 60px;
+			margin-top: 10px;
+			font-size: 30px;
+			font-weight: bold;
+		}
 
-        .bottom-right-buttons {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            display: flex;
-            flex-direction: column; /* Align scale buttons and label in a column */
-            align-items: flex-end; /* Align to the right */
-        }
+		#scaleUp {
+			background-color: green;
+			color: white;
+		}
 
-        /* Custom styles for scale buttons */
-        #scaleUp,
-        #scaleDown,
-        #magnifyGlass {
-            width: 60px;
-            height: 60px;
-            margin-top: 10px;
-            font-size: 30px; /* Increased font size */
-            font-weight: bold;
-        }
+		#scaleDown {
+			background-color: red;
+			color: white;
+		}
 
-        #scaleUp {
-            background-color: green; /* Default: green for scale up */
-            color: white;
-        }
+		#magnifyGlass {
+			font-size: 42px;
+			color: blue;
+			margin-right: 10px;
+		}
+		.activated-buttons-container {
+			position: fixed;
+			top: 40px;
+			left: 35%;
+			transform: translateX(-50%);
+			display: flex;
+			color: red;
+			font-size: 30px !important;
+			text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+			padding: 10px;
+			align-items: right; 
+			z-index: 1; 
+		}
 
-        #scaleDown {
-            background-color: red; /* Red for scale down */
-            color: white;
-        }
-
-        #magnifyGlass {
-            font-size: 42px; /* Further increased font size */
-            color: blue;
-            margin-right: 10px;
-        }
     </style>
-    <title>Toggle and Scale Images</title>
+    <title>NIGHTRUNNERS RACE MAP</title>
 </head>
 
 <body>
 
     <div class="image-container">
         <img id="initialImage" src="https://i.redd.it/qrqnb9wr91bc1.jpeg" alt="Initial Image">
-        <img id="image1" src="https://i.imgur.com/3EYOjRM.png" alt="Tomioka to Tatsumi">
-        <img id="image2" src="https://i.imgur.com/SBUqIc0.png" alt="Kiba to Ariake">
-        <img id="image3" src="https://i.imgur.com/mczKftd.png" alt="Koto City Loop">
-        <img id="image4" src="https://i.imgur.com/TcpApah.png" alt="Way Out East">
-        <img id="image5" src="https://i.imgur.com/Q7tvAi7.png" alt="Arakawa Bridge to Kiba East">
-        <img id="image6" src="https://via.placeholder.com/800x600" alt="Image 6">
-        <img id="image7" src="https://i.imgur.com/S6naFnB.png" alt="Toyosu to Sumeida Connection<">
-        <img id="image8" src="https://via.placeholder.com/800x600" alt="Image 8">
-        <img id="image9" src="https://via.placeholder.com/800x600" alt="Image 9">
+        <img id="image01" src="https://i.imgur.com/3EYOjRM.png" alt="Tomioka to Tatsumi">
+        <img id="image02" src="https://i.imgur.com/SBUqIc0.png" alt="Kiba to Ariake">
+        <img id="image03" src="https://i.imgur.com/mczKftd.png" alt="Koto City Loop">
+        <img id="image04" src="https://i.imgur.com/TcpApah.png" alt="Way Out East">
+        <img id="image05" src="https://i.imgur.com/Q7tvAi7.png" alt="Arakawa Bridge to Kiba East">
+        <img id="image06" src="https://via.placeholder.com/800x600" alt="Image 6">
+        <img id="image07" src="https://i.imgur.com/S6naFnB.png" alt="Toyosu to Sumida Connection<">
+        <img id="image08" src="https://via.placeholder.com/800x600" alt="Image 8">
+        <img id="image09" src="https://i.imgur.com/eAQ9OIj.png" alt="Image 9">
         <img id="image10" src="https://via.placeholder.com/800x600" alt="Image 10">
         <img id="image11" src="https://via.placeholder.com/800x600" alt="Image 11">
         <img id="image12" src="https://via.placeholder.com/800x600" alt="Image 12">
@@ -155,25 +162,27 @@
         <img id="image14" src="https://via.placeholder.com/800x600" alt="Image 14">
         <img id="image15" src="https://via.placeholder.com/800x600" alt="Image 15">
         <img id="image16" src="https://via.placeholder.com/800x600" alt="Image 16">
+		<img id="image17" src="https://via.placeholder.com/800x600" alt="Image 17">
+		<img id="image18" src="https://via.placeholder.com/800x600" alt="Image 18">
     </div>
 
     <div class="top-right-buttons">
         <div class="button-group">
             <div class="button-label" style="font-size: 48px;">Forwards</div>
             <div class="toggle-container">
-                <button id="button1" onclick="toggleImage('image1', 'Tomioka to Tatsumi')">Tomioka to Tatsumi</button>
+                <button id="button01" onclick="toggleImage('image01', 'Tomioka to Tatsumi')">Tomioka to Tatsumi</button>
             </div>
             <div class="toggle-container">
-                <button id="button3" onclick="toggleImage('image3', 'Koto City Loop')">Koto City Loop</button>
+                <button id="button03" onclick="toggleImage('image03', 'Koto City Loop')">Koto City Loop</button>
             </div>
             <div class="toggle-container">
-                <button id="button5" onclick="toggleImage('image5', 'Arakawa Bridge to Kiba East')">Arakawa Bridge to Kiba East</button>
+                <button id="button05" onclick="toggleImage('image05', 'Arakawa Bridge to Kiba East')">Arakawa Bridge to Kiba East</button>
             </div>
             <div class="toggle-container">
-                <button id="button7" onclick="toggleImage('image7', 'Toyosu to Sumeida Connection')">Toyosu to Sumeida Connection</button>
+                <button id="button07" onclick="toggleImage('image07', 'Toyosu to Sumida Connection')">Toyosu to Sumida Connection</button>
             </div>
             <div class="toggle-container">
-                <button id="button9" onclick="toggleImage('image9', 'Button 9')">Button 9</button>
+                <button id="button09" onclick="toggleImage('image09', 'Yumenoshima P. to Kiba Tunnel')">Yumenoshima P. to Kiba Tunnel</button>
             </div>
             <div class="toggle-container">
                 <button id="button11" onclick="toggleImage('image11', 'Button 11')">Button 11</button>
@@ -189,16 +198,16 @@
         <div class="button-group">
             <div class="button-label" style="font-size: 48px;">Reverse</div>
             <div class="toggle-container">
-                <button id="button2" onclick="toggleImage('image2', 'Kiba to Ariake')">Kiba to Ariake</button>
+                <button id="button02" onclick="toggleImage('image02', 'Kiba to Ariake')">Kiba to Ariake</button>
             </div>
             <div class="toggle-container">
-                <button id="button4" onclick="toggleImage('image4', 'Way Out East')">Way Out East</button>
+                <button id="button04" onclick="toggleImage('image04', 'Way Out East')">Way Out East</button>
             </div>
             <div class="toggle-container">
-                <button id="button6" onclick="toggleImage('image6', 'Button 6')">Button 6</button>
+                <button id="button06" onclick="toggleImage('image06', 'Button 6')">Button 6</button>
             </div>
             <div class="toggle-container">
-                <button id="button8" onclick="toggleImage('image8', 'Button 8')">Button 8</button>
+                <button id="button08" onclick="toggleImage('image08', 'Button 8')">Button 8</button>
             </div>
             <div class="toggle-container">
                 <button id="button10" onclick="toggleImage('image10', 'Button 10')">Button 10</button>
@@ -213,6 +222,17 @@
                 <button id="button16" onclick="toggleImage('image16', 'Button 16')">Button 16</button>
             </div>
         </div>
+		<!-- Add a new button group for the third column -->
+		<div class="button-group">
+			<div class="button-label" style="font-size: 48px;">Drag</div>
+			<div class="toggle-container">
+				<button id="button17" onclick="toggleImage('image17', 'Button 17')">Button 17</button>
+			</div>
+			<div class="toggle-container">
+				<button id="button18" onclick="toggleImage('image18', 'Button 18')">Button 18</button>
+			</div>
+			<!-- Add more buttons for the third column as needed -->
+		</div>
     </div>
 
     <div class="activated-buttons-container" id="activatedButtonsLabel" style="font-size: 36px;"> </div>
@@ -222,101 +242,113 @@
         <button id="scaleUp" onclick="scaleImage('up')">+</button>
         <button id="scaleDown" onclick="scaleImage('down')">-</button>
     </div>
+<script>
+    var scaleFactors = {
+        'initialImage': 1,
+        'image01': 1,
+        'image02': 1,
+        'image03': 1,
+        'image04': 1,
+        'image05': 1,
+        'image06': 1,
+        'image07': 1,
+        'image08': 1,
+        'image09': 1,
+        'image10': 1,
+        'image11': 1,
+        'image12': 1,
+        'image13': 1,
+        'image14': 1,
+        'image15': 1,
+        'image16': 1,
+		'image17': 1,
+		'image18': 1,
+    };
 
-    <script>
-        var scaleFactors = {
-            'initialImage': 1,
-            'image1': 1,
-            'image2': 1,
-            'image3': 1,
-            'image4': 1,
-            'image5': 1,
-            'image6': 1,
-            'image7': 1,
-            'image8': 1,
-            'image9': 1,
-            'image10': 1,
-            'image11': 1,
-            'image12': 1,
-            'image13': 1,
-            'image14': 1,
-            'image15': 1,
-            'image16': 1
-        };
+    // Variable to keep track of the currently activated button
+    var currentActivatedButton = null;
 
-        // Ensure the initial image is displayed, and buttons are not active
-        document.getElementById('initialImage').style.display = 'block';
+    // Ensure the initial image is displayed, and no buttons are active initially
+    document.getElementById('initialImage').style.display = 'block';
 
-        for (var i = 1; i <= 16; i++) {
-            var imageId = 'image' + i;
-            var button = document.getElementById('button' + i);
-            document.getElementById(imageId).style.display = 'none';
-            button.style.backgroundColor = 'white';
-        }
+    for (var i = 1; i <= 18; i++) {
+        var imageId = 'image' + (i < 10 ? '0' : '') + i;
+        var button = document.getElementById('button' + (i < 10 ? '0' : '') + i);
+        document.getElementById(imageId).style.display = 'none';
+        button.style.backgroundColor = 'white';
+    }
 
-        function toggleImage(imageId, buttonName) {
+    function toggleImage(imageId, buttonName) {
+		var image = document.getElementById(imageId);
+		var button = document.getElementById('button' + imageId.slice(-2));
+		var activatedButtons = getActivatedButtons();
+
+		// Deactivate the button if it's already activated
+		if (activatedButtons.includes(buttonName)) {
+			image.style.display = 'none';
+			button.style.backgroundColor = 'white';
+			button.style.color = 'black'; // Set the text color to black when not selected
+			currentActivatedButton = null;
+		} else {
+			// Deactivate previously activated button
+			if (currentActivatedButton !== null) {
+				var prevButton = document.getElementById(currentActivatedButton);
+				prevButton.style.backgroundColor = 'white';
+				prevButton.style.color = 'black'; // Reset the text color for the previously activated button
+				document.getElementById('image' + currentActivatedButton.slice(-2)).style.display = 'none';
+			}
+
+			// Activate the clicked button
+			image.style.display = 'block';
+			button.style.backgroundColor = 'red';
+			button.style.color = 'white'; // Set the text color to white when selected
+			currentActivatedButton = 'button' + imageId.slice(-2);
+		}
+
+		updateActivatedButtonsLabel(getActivatedButtons());
+	}
+
+    function scaleImage(direction) {
+        var images = document.querySelectorAll('.image-container img');
+        var buttons = document.querySelectorAll('.toggle-container button');
+        var activatedButtons = getActivatedButtons();
+
+        images.forEach(function (image, index) {
+            var imageId = image.id;
+            var currentScale = scaleFactors[imageId];
+            var scaleFactor = direction === 'up' ? 1.02 : 0.98;
+            scaleFactors[imageId] = currentScale * scaleFactor;
+            image.style.transform = 'scale(' + scaleFactors[imageId] + ')';
+        });
+
+        updateActivatedButtonsLabel(activatedButtons);
+    }
+
+    function magnify() {
+        // Add your magnification logic here
+        alert('Magnifying!');
+    }
+
+    function getActivatedButtons() {
+        var activatedButtons = [];
+        for (var i = 1; i <= 18; i++) {
+            var imageId = 'image' + (i < 10 ? '0' + i : i);
             var image = document.getElementById(imageId);
-            var button = document.getElementById('button' + imageId.charAt(imageId.length - 1));
-            var activatedButtons = getActivatedButtons();
-
-            if (image.style.display === 'none') {
-                image.style.display = 'block';
-                button.style.backgroundColor = 'red'; // Change button color to red when visible
+            var buttonName = document.getElementById('button' + (i < 10 ? '0' + i : i)).textContent;
+            if (image.style.display !== 'none') {
                 activatedButtons.push(buttonName);
-            } else {
-                image.style.display = 'none';
-                button.style.backgroundColor = 'white'; // Default: white
-                var index = activatedButtons.indexOf(buttonName);
-                if (index !== -1) {
-                    activatedButtons.splice(index, 1);
-                }
             }
-
-            updateActivatedButtonsLabel(activatedButtons);
         }
+        return activatedButtons;
+    }
 
-        function scaleImage(direction) {
-            var images = document.querySelectorAll('.image-container img');
-            var buttons = document.querySelectorAll('.toggle-container button');
-            var activatedButtons = getActivatedButtons();
+    function updateActivatedButtonsLabel(activatedButtons) {
+        var label = document.getElementById('activatedButtonsLabel');
+        label.textContent = activatedButtons.join(', ');
+    }
+</script>
 
-            images.forEach(function (image, index) {
-                var imageId = image.id;
-                var currentScale = scaleFactors[imageId];
-                var scaleFactor = direction === 'up' ? 1.02 : 0.98;
-                scaleFactors[imageId] = currentScale * scaleFactor;
-                image.style.transform = 'scale(' + scaleFactors[imageId] + ')';
-                buttons[index].style.width = 220 / scaleFactors['initialImage'] + 'px'; // Adjust button width
-                buttons[index].style.height = 66 / scaleFactors['initialImage'] + 'px'; // Adjust button height
-                buttons[index].style.fontSize = 27 / scaleFactors['initialImage'] + 'px'; // Adjust button font size
-            });
 
-            updateActivatedButtonsLabel(activatedButtons);
-        }
-
-        function magnify() {
-            // Add your magnification logic here
-            alert('Magnifying!');
-        }
-
-        function getActivatedButtons() {
-            var activatedButtons = [];
-            for (var i = 1; i <= 16; i++) {
-                var imageId = 'image' + i;
-                var image = document.getElementById(imageId);
-                var buttonName = document.getElementById('button' + i).textContent;
-                if (image.style.display !== 'none') {
-                    activatedButtons.push(buttonName);
-                }
-            }
-            return activatedButtons;
-        }
-
-        function updateActivatedButtonsLabel(activatedButtons) {
-            var label = document.getElementById('activatedButtonsLabel');
-            label.textContent = activatedButtons.join(', ');
-        }
-    </script>
 
 </body>
 
