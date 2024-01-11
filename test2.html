@@ -24,7 +24,7 @@
 			display: none;
 			width: 100vw;
 			height: auto;
-			transform-origin: top left;
+			transform-origin: center center;
 		}
 
 		#initialImage,
@@ -151,12 +151,12 @@
         <img id="image03" src="https://i.imgur.com/mczKftd.png" alt="Koto City Loop">
         <img id="image04" src="https://i.imgur.com/TcpApah.png" alt="Way Out East">
         <img id="image05" src="https://i.imgur.com/Q7tvAi7.png" alt="Arakawa Bridge to Kiba East">
-        <img id="image06" src="https://via.placeholder.com/800x600" alt="Image 6">
+        <img id="image06" src="https://i.imgur.com/7gN6Fgv.png" alt="Image 6">
         <img id="image07" src="https://i.imgur.com/S6naFnB.png" alt="Toyosu to Sumida Connection<">
         <img id="image08" src="https://via.placeholder.com/800x600" alt="Image 8">
         <img id="image09" src="https://i.imgur.com/eAQ9OIj.png" alt="Image 9">
         <img id="image10" src="https://via.placeholder.com/800x600" alt="Image 10">
-        <img id="image11" src="https://via.placeholder.com/800x600" alt="Image 11">
+        <img id="image11" src="https://i.imgur.com/DvqaS5z.png" alt="Image 11">
         <img id="image12" src="https://via.placeholder.com/800x600" alt="Image 12">
         <img id="image13" src="https://via.placeholder.com/800x600" alt="Image 13">
         <img id="image14" src="https://via.placeholder.com/800x600" alt="Image 14">
@@ -170,100 +170,101 @@
         <div class="button-group">
             <div class="button-label" style="font-size: 48px;">Forwards</div>
             <div class="toggle-container">
-                <button id="button01" onclick="toggleImage('image01', 'Tomioka to Tatsumi')">Tomioka to Tatsumi</button>
+                <button id="button01" data-label="Tomioka to Tatsumi" onclick="toggleImage('image01')">Tomioka to Tatsumi</button>
             </div>
             <div class="toggle-container">
-                <button id="button03" onclick="toggleImage('image03', 'Koto City Loop')">Koto City Loop</button>
+                <button id="button03" data-label="Koto City Loop" onclick="toggleImage('image03')">Koto City Loop</button>
             </div>
             <div class="toggle-container">
-                <button id="button05" onclick="toggleImage('image05', 'Arakawa Bridge to Kiba East')">Arakawa Bridge to Kiba East</button>
+                <button id="button05" data-label="Arakawa Bridge to Kiba East" onclick="toggleImage('image05')">Arakawa Bridge to Kiba East</button>
             </div>
             <div class="toggle-container">
-                <button id="button07" onclick="toggleImage('image07', 'Toyosu to Sumida Connection')">Toyosu to Sumida Connection</button>
+                <button id="button07" data-label="Toyosu to Sumida Connection" onclick="toggleImage('image07')">Toyosu to Sumida Connection</button>
             </div>
             <div class="toggle-container">
-                <button id="button09" onclick="toggleImage('image09', 'Yumenoshima P. to Kiba Tunnel')">Yumenoshima P. to Kiba Tunnel</button>
+                <button id="button09" data-label="Yumenoshima P. to Kiba Tunnel" onclick="toggleImage('image09')">Yumenoshima P. to Kiba Tunnel</button>
             </div>
             <div class="toggle-container">
-                <button id="button11" onclick="toggleImage('image11', 'Button 11')">Button 11</button>
+                <button id="button11" data-label="Tunnel Rats" onclick="toggleImage('image11')">Tunnel Rats</button>
             </div>
             <div class="toggle-container">
-                <button id="button13" onclick="toggleImage('image13', 'Button 13')">Button 13</button>
+                <button id="button13" data-label="Button 13" onclick="toggleImage('image13')">Button 13</button>
             </div>
             <div class="toggle-container">
-                <button id="button15" onclick="toggleImage('image15', 'Button 15')">Button 15</button>
+                <button id="button15" data-label="Button 15" onclick="toggleImage('image15')">Button 15</button>
             </div>
         </div>
 
         <div class="button-group">
             <div class="button-label" style="font-size: 48px;">Reverse</div>
             <div class="toggle-container">
-                <button id="button02" onclick="toggleImage('image02', 'Kiba to Ariake')">Kiba to Ariake</button>
+                <button id="button02" data-label="Kiba to Ariake" onclick="toggleImage('image02')">Kiba to Ariake</button>
             </div>
             <div class="toggle-container">
-                <button id="button04" onclick="toggleImage('image04', 'Way Out East')">Way Out East</button>
+                <button id="button04" data-label="Way Out East" onclick="toggleImage('image04')">Way Out East</button>
             </div>
             <div class="toggle-container">
-                <button id="button06" onclick="toggleImage('image06', 'Button 6')">Button 6</button>
+                <button id="button06" data-label="Tunnel Rats Reverse" onclick="toggleImage('image06')">Tunnel Rats</button>
             </div>
             <div class="toggle-container">
-                <button id="button08" onclick="toggleImage('image08', 'Button 8')">Button 8</button>
+                <button id="button08" data-label="Button 8" onclick="toggleImage('image08')">Button 8</button>
             </div>
             <div class="toggle-container">
-                <button id="button10" onclick="toggleImage('image10', 'Button 10')">Button 10</button>
+                <button id="button10" data-label="Button 10" onclick="toggleImage('image10')">Button 10</button>
             </div>
             <div class="toggle-container">
-                <button id="button12" onclick="toggleImage('image12', 'Button 12')">Button 12</button>
+                <button id="button12" data-label="Button 12" onclick="toggleImage('image12')">Button 12</button>
             </div>
             <div class="toggle-container">
-                <button id="button14" onclick="toggleImage('image14', 'Button 14')">Button 14</button>
+                <button id="button14" data-label="Button 14" onclick="toggleImage('image14')">Button 14</button>
             </div>
             <div class="toggle-container">
-                <button id="button16" onclick="toggleImage('image16', 'Button 16')">Button 16</button>
+                <button id="button16" data-label="Button 16" onclick="toggleImage('image16')">Button 16</button>
             </div>
         </div>
-		<!-- Add a new button group for the third column -->
-		<div class="button-group">
-			<div class="button-label" style="font-size: 48px;">Drag</div>
-			<div class="toggle-container">
-				<button id="button17" onclick="toggleImage('image17', 'Arakawa Bridge Drag')">Arakawa Bridge Drag</button>
-			</div>
-			<div class="toggle-container">
-				<button id="button18" onclick="toggleImage('image18', 'Button 18')">Button 18</button>
-			</div>
-			<!-- Add more buttons for the third column as needed -->
-		</div>
+        <!-- Add a new button group for the third column -->
+        <div class="button-group">
+            <div class="button-label" style="font-size: 48px;">Drag</div>
+            <div class="toggle-container">
+                <button id="button17" data-label="Arakawa Bridge Drag" onclick="toggleImage('image17')">Arakawa Bridge Drag</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button18" data-label="Button 18" onclick="toggleImage('image18')">Button 18</button>
+            </div>
+            <!-- Add more buttons for the third column as needed -->
+        </div>
     </div>
 
     <div class="activated-buttons-container" id="activatedButtonsLabel" style="font-size: 36px;"> </div>
 
-    <div class="bottom-right-buttons">
+   <div class="bottom-right-buttons">
         <div id="magnifyGlass" onclick="magnify()">🔍</div>
-        <button id="scaleUp" onclick="scaleImage('up')">+</button>
+		<button id="scaleUp" onclick="scaleImage('up')">+</button>
         <button id="scaleDown" onclick="scaleImage('down')">-</button>
     </div>
-<script>
-    var scaleFactors = {
-        'initialImage': 1,
-        'image01': 1,
-        'image02': 1,
-        'image03': 1,
-        'image04': 1,
-        'image05': 1,
-        'image06': 1,
-        'image07': 1,
-        'image08': 1,
-        'image09': 1,
-        'image10': 1,
-        'image11': 1,
-        'image12': 1,
-        'image13': 1,
-        'image14': 1,
-        'image15': 1,
-        'image16': 1,
-		'image17': 1,
-		'image18': 1,
-    };
+
+    <script>
+        var scaleFactors = {
+            'initialImage': 1,
+            'image01': 1,
+            'image02': 1,
+            'image03': 1,
+            'image04': 1,
+            'image05': 1,
+            'image06': 1,
+            'image07': 1,
+            'image08': 1,
+            'image09': 1,
+            'image10': 1,
+            'image11': 1,
+            'image12': 1,
+            'image13': 1,
+            'image14': 1,
+            'image15': 1,
+            'image16': 1,
+            'image17': 1,
+            'image18': 1,
+        };
 
     // Variable to keep track of the currently activated button
     var currentActivatedButton = null;
@@ -278,37 +279,43 @@
         button.style.backgroundColor = 'white';
     }
 
-    function toggleImage(imageId, buttonName) {
+    var currentActivatedButton = null;
+
+	function toggleImage(imageId) {
 		var image = document.getElementById(imageId);
 		var button = document.getElementById('button' + imageId.slice(-2));
 		var activatedButtons = getActivatedButtons();
 
-		// Deactivate the button if it's already activated
-		if (activatedButtons.includes(buttonName)) {
-			image.style.display = 'none';
+		if (currentActivatedButton === 'button' + imageId.slice(-2)) {
+			// If the same button is clicked twice, deselect it
 			button.style.backgroundColor = 'white';
-			button.style.color = 'black'; // Set the text color to black when not selected
+			button.style.color = 'black';
+			image.style.display = 'none';
 			currentActivatedButton = null;
+			updateActivatedButtonsLabel([]); // Clear the label when deselecting
 		} else {
-			// Deactivate previously activated button
+			// Deactivate the previously activated button
 			if (currentActivatedButton !== null) {
 				var prevButton = document.getElementById(currentActivatedButton);
 				prevButton.style.backgroundColor = 'white';
-				prevButton.style.color = 'black'; // Reset the text color for the previously activated button
+				prevButton.style.color = 'black';
 				document.getElementById('image' + currentActivatedButton.slice(-2)).style.display = 'none';
 			}
+
+			// Clear the label before updating with the newly activated buttons
+			updateActivatedButtonsLabel([]);
 
 			// Activate the clicked button
 			image.style.display = 'block';
 			button.style.backgroundColor = 'red';
-			button.style.color = 'white'; // Set the text color to white when selected
+			button.style.color = 'white';
 			currentActivatedButton = 'button' + imageId.slice(-2);
+
+			var buttonLabel = button.dataset.label || button.textContent; // Use data-label if available, otherwise use button text
+			updateActivatedButtonsLabel([buttonLabel]);
 		}
-
-		updateActivatedButtonsLabel(getActivatedButtons());
 	}
-
-    function scaleImage(direction) {
+	 function scaleImage(direction) {
         var images = document.querySelectorAll('.image-container img');
         var buttons = document.querySelectorAll('.toggle-container button');
         var activatedButtons = getActivatedButtons();
@@ -330,22 +337,36 @@
     }
 
     function getActivatedButtons() {
-        var activatedButtons = [];
-        for (var i = 1; i <= 18; i++) {
-            var imageId = 'image' + (i < 10 ? '0' + i : i);
-            var image = document.getElementById(imageId);
-            var buttonName = document.getElementById('button' + (i < 10 ? '0' + i : i)).textContent;
-            if (image.style.display !== 'none') {
-                activatedButtons.push(buttonName);
-            }
-        }
-        return activatedButtons;
-    }
+		var activatedButtons = [];
+		for (var i = 1; i <= 18; i++) {
+			var imageId = 'image' + (i < 10 ? '0' + i : i);
+			var image = document.getElementById(imageId);
+			var buttonName = document.getElementById('button' + (i < 10 ? '0' + i : i)).textContent;
+			if (image.style.display !== 'none') {
+				activatedButtons.push(buttonName);
+			}
+		}
+		return activatedButtons;
+	}
 
-    function updateActivatedButtonsLabel(activatedButtons) {
-        var label = document.getElementById('activatedButtonsLabel');
-        label.textContent = activatedButtons.join(', ');
-    }
+
+	function updateActivatedButtonsLabel(activatedButtons) {
+		var label = document.getElementById('activatedButtonsLabel');
+		
+		if (activatedButtons.length > 0) {
+			label.textContent = activatedButtons.join(', ');
+		} else {
+			label.textContent = ''; // Clear the label when no buttons are activated
+		}
+	}
+	document.getElementById('button08').style.visibility = 'hidden';
+	document.getElementById('button10').style.visibility = 'hidden';
+	document.getElementById('button12').style.visibility = 'hidden';
+	document.getElementById('button13').style.visibility = 'hidden';
+	document.getElementById('button14').style.visibility = 'hidden';
+	document.getElementById('button15').style.visibility = 'hidden';
+	document.getElementById('button16').style.visibility = 'hidden';
+	document.getElementById('button18').style.visibility = 'hidden';
 </script>
 
 
