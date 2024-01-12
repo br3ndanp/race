@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
     <style>
         body {
             background-color: black;
             margin: 0;
             font-size: 24px;
-            font-family: 'Press Start 2P', cursive; /* Use Press Start 2P font */
+            font-family: 'Silkscreen', monospace;
             text-transform: uppercase;
         }
 		.image-container {
@@ -19,7 +20,7 @@
 
 		.image-container img {
 			position: absolute;
-			top: 0;
+			top: 50px;
 			left: 0;
 			display: none;
 			width: 100vw;
@@ -60,7 +61,6 @@
 
 		.top-right-buttons {
 			position: fixed;
-			top: 10px;
 			right: 10px;
 			display: flex;
 			flex-direction: row;
@@ -68,7 +68,7 @@
 		}
 
 		.button-group {
-			margin-right: 20px;
+			margin-right: 10px;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
@@ -86,8 +86,8 @@
 		.button-label {
 			color: white;
 			margin-bottom: 10px;
-			font-size: 30px;
-			font-family: 'Impact', sans-serif;
+			font-size: 28px;
+			font-family: 'Silkscreen', monospace;
 		}
 
 		.bottom-right-buttons {
@@ -127,11 +127,11 @@
 		.activated-buttons-container {
 			position: fixed;
 			top: 40px;
-			left: 35%;
+			left: 30%;
 			transform: translateX(-50%);
 			display: flex;
-			color: red;
-			font-size: 30px !important;
+			color: white;
+			font-size: 50px !important;
 			text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
 			padding: 10px;
 			align-items: right; 
@@ -151,50 +151,33 @@
         <img id="image03" src="https://i.imgur.com/mczKftd.png" alt="Koto City Loop">
         <img id="image04" src="https://i.imgur.com/TcpApah.png" alt="Way Out East">
         <img id="image05" src="https://i.imgur.com/Q7tvAi7.png" alt="Arakawa Bridge to Kiba East">
-        <img id="image06" src="https://i.imgur.com/7gN6Fgv.png" alt="Image 6">
+        <img id="image06" src="https://i.imgur.com/7gN6Fgv.png" alt="Tunnel Rats Reverse">
         <img id="image07" src="https://i.imgur.com/S6naFnB.png" alt="Toyosu to Sumida Connection<">
         <img id="image08" src="https://via.placeholder.com/800x600" alt="Image 8">
-        <img id="image09" src="https://i.imgur.com/eAQ9OIj.png" alt="Image 9">
+        <img id="image09" src="https://i.imgur.com/eAQ9OIj.png" alt="Yumenoshima P. to Kiba Tunnel">
         <img id="image10" src="https://via.placeholder.com/800x600" alt="Image 10">
-        <img id="image11" src="https://i.imgur.com/DvqaS5z.png" alt="Image 11">
+        <img id="image11" src="https://i.imgur.com/DvqaS5z.png" alt="Tunnel Rats">
         <img id="image12" src="https://via.placeholder.com/800x600" alt="Image 12">
-        <img id="image13" src="https://via.placeholder.com/800x600" alt="Image 13">
+        <img id="image13" src="https://i.imgur.com/EVdJpQM.png" alt="Toyosu to Tomioka">
         <img id="image14" src="https://via.placeholder.com/800x600" alt="Image 14">
-        <img id="image15" src="https://via.placeholder.com/800x600" alt="Image 15">
+        <img id="image15" src="https://i.imgur.com/8DnkJ8n.png" alt="Tomioka Dash">
         <img id="image16" src="https://via.placeholder.com/800x600" alt="Image 16">
 		<img id="image17" src="https://i.imgur.com/gyCF5dl.png" alt="Image 17">
 		<img id="image18" src="https://via.placeholder.com/800x600" alt="Image 18">
     </div>
 
     <div class="top-right-buttons">
-        <div class="button-group">
-            <div class="button-label" style="font-size: 48px;">Forwards</div>
+		 <div class="button-group">
+            <div class="button-label" style="font-size: 48px;">Drag</div>
             <div class="toggle-container">
-                <button id="button01" data-label="Tomioka to Tatsumi" onclick="toggleImage('image01')">Tomioka to Tatsumi</button>
+                <button id="button17" data-label="Arakawa Bridge Drag" onclick="toggleImage('image17')">Arakawa Bridge Drag</button>
             </div>
             <div class="toggle-container">
-                <button id="button03" data-label="Koto City Loop" onclick="toggleImage('image03')">Koto City Loop</button>
+                <button id="button18" data-label="Button 18" onclick="toggleImage('image18')">Button 18</button>
             </div>
-            <div class="toggle-container">
-                <button id="button05" data-label="Arakawa Bridge to Kiba East" onclick="toggleImage('image05')">Arakawa Bridge to Kiba East</button>
-            </div>
-            <div class="toggle-container">
-                <button id="button07" data-label="Toyosu to Sumida Connection" onclick="toggleImage('image07')">Toyosu to Sumida Connection</button>
-            </div>
-            <div class="toggle-container">
-                <button id="button09" data-label="Yumenoshima P. to Kiba Tunnel" onclick="toggleImage('image09')">Yumenoshima P. to Kiba Tunnel</button>
-            </div>
-            <div class="toggle-container">
-                <button id="button11" data-label="Tunnel Rats" onclick="toggleImage('image11')">Tunnel Rats</button>
-            </div>
-            <div class="toggle-container">
-                <button id="button13" data-label="Button 13" onclick="toggleImage('image13')">Button 13</button>
-            </div>
-            <div class="toggle-container">
-                <button id="button15" data-label="Button 15" onclick="toggleImage('image15')">Button 15</button>
-            </div>
+            <!-- Add more buttons for the third column as needed -->
         </div>
-
+        
         <div class="button-group">
             <div class="button-label" style="font-size: 48px;">Reverse</div>
             <div class="toggle-container">
@@ -222,17 +205,35 @@
                 <button id="button16" data-label="Button 16" onclick="toggleImage('image16')">Button 16</button>
             </div>
         </div>
-        <!-- Add a new button group for the third column -->
-        <div class="button-group">
-            <div class="button-label" style="font-size: 48px;">Drag</div>
+        
+		<div class="button-group">
+            <div class="button-label" style="font-size: 48px;">Forward</div>
             <div class="toggle-container">
-                <button id="button17" data-label="Arakawa Bridge Drag" onclick="toggleImage('image17')">Arakawa Bridge Drag</button>
+                <button id="button01" data-label="Tomioka to Tatsumi" onclick="toggleImage('image01')">Tomioka to Tatsumi</button>
             </div>
             <div class="toggle-container">
-                <button id="button18" data-label="Button 18" onclick="toggleImage('image18')">Button 18</button>
+                <button id="button03" data-label="Koto City Loop" onclick="toggleImage('image03')">Koto City Loop</button>
             </div>
-            <!-- Add more buttons for the third column as needed -->
+            <div class="toggle-container">
+                <button id="button05" data-label="Arakawa Bridge to Kiba East" onclick="toggleImage('image05')">Arakawa Bridge to Kiba East</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button07" data-label="Toyosu to Sumida Connection" onclick="toggleImage('image07')">Toyosu to Sumida Connection</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button09" data-label="Yumenoshima P. to Kiba Tunnel" onclick="toggleImage('image09')">Yumenoshima P. to Kiba Tunnel</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button11" data-label="Tunnel Rats" onclick="toggleImage('image11')">Tunnel Rats</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button13" data-label="Toyosu to Tomioka" onclick="toggleImage('image13')">Toyosu to Tomioka</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button15" data-label="Tomioka Dash" onclick="toggleImage('image15')">Tomioka Dash</button>
+            </div>
         </div>
+
     </div>
 
     <div class="activated-buttons-container" id="activatedButtonsLabel" style="font-size: 36px;"> </div>
@@ -362,9 +363,7 @@
 	document.getElementById('button08').style.visibility = 'hidden';
 	document.getElementById('button10').style.visibility = 'hidden';
 	document.getElementById('button12').style.visibility = 'hidden';
-	document.getElementById('button13').style.visibility = 'hidden';
 	document.getElementById('button14').style.visibility = 'hidden';
-	document.getElementById('button15').style.visibility = 'hidden';
 	document.getElementById('button16').style.visibility = 'hidden';
 	document.getElementById('button18').style.visibility = 'hidden';
 </script>
