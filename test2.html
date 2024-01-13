@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Moirai+One&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap">
+
+
     <style>
         body {
             background-color: black;
@@ -124,14 +128,25 @@
 			color: blue;
 			margin-right: 10px;
 		}
+		.title-label {
+            color: white;
+            font-size: 50px;
+            font-family: 'Moirai One', cursive;
+            position: fixed;
+            top: 10px;
+            left: 35%;
+            transform: translateX(-50%);
+			z-index: 2; 
+        }
 		.activated-buttons-container {
 			position: fixed;
-			top: 40px;
-			left: 30%;
+			top: 60px;
+			left: 35%;
 			transform: translateX(-50%);
 			display: flex;
-			color: white;
+			color: red;
 			font-size: 50px !important;
+			font-family: 'Gloria Hallelujah', cursive;
 			text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
 			padding: 10px;
 			align-items: right; 
@@ -144,6 +159,8 @@
 
 <body>
 
+	<div class="title-label">NIGHT-RUNNERS RACE MAP</div>
+
     <div class="image-container">
         <img id="initialImage" src="https://i.redd.it/qrqnb9wr91bc1.jpeg" alt="Initial Image">
         <img id="image01" src="https://i.imgur.com/3EYOjRM.png" alt="Tomioka to Tatsumi">
@@ -153,7 +170,7 @@
         <img id="image05" src="https://i.imgur.com/Q7tvAi7.png" alt="Arakawa Bridge to Kiba East">
         <img id="image06" src="https://i.imgur.com/7gN6Fgv.png" alt="Tunnel Rats Reverse">
         <img id="image07" src="https://i.imgur.com/S6naFnB.png" alt="Toyosu to Sumida Connection<">
-        <img id="image08" src="https://via.placeholder.com/800x600" alt="Image 8">
+        <img id="image08" src="https://i.imgur.com/gyCF5dl.png" alt="Arakawa Drag">
         <img id="image09" src="https://i.imgur.com/eAQ9OIj.png" alt="Yumenoshima P. to Kiba Tunnel">
         <img id="image10" src="https://via.placeholder.com/800x600" alt="Image 10">
         <img id="image11" src="https://i.imgur.com/DvqaS5z.png" alt="Tunnel Rats">
@@ -162,22 +179,9 @@
         <img id="image14" src="https://via.placeholder.com/800x600" alt="Image 14">
         <img id="image15" src="https://i.imgur.com/8DnkJ8n.png" alt="Tomioka Dash">
         <img id="image16" src="https://via.placeholder.com/800x600" alt="Image 16">
-		<img id="image17" src="https://i.imgur.com/gyCF5dl.png" alt="Image 17">
-		<img id="image18" src="https://via.placeholder.com/800x600" alt="Image 18">
     </div>
 
     <div class="top-right-buttons">
-		 <div class="button-group">
-            <div class="button-label" style="font-size: 48px;">Drag</div>
-            <div class="toggle-container">
-                <button id="button17" data-label="Arakawa Bridge Drag" onclick="toggleImage('image17')">Arakawa Bridge Drag</button>
-            </div>
-            <div class="toggle-container">
-                <button id="button18" data-label="Button 18" onclick="toggleImage('image18')">Button 18</button>
-            </div>
-            <!-- Add more buttons for the third column as needed -->
-        </div>
-        
         <div class="button-group">
             <div class="button-label" style="font-size: 48px;">Reverse</div>
             <div class="toggle-container">
@@ -189,8 +193,9 @@
             <div class="toggle-container">
                 <button id="button06" data-label="Tunnel Rats Reverse" onclick="toggleImage('image06')">Tunnel Rats</button>
             </div>
+			<div class="button-label" style="font-size: 48px; margin: 9px">Drag</div>
             <div class="toggle-container">
-                <button id="button08" data-label="Button 8" onclick="toggleImage('image08')">Button 8</button>
+                <button id="button08" data-label="Arakawa Bridge" onclick="toggleImage('image08')">Arakawa Bridge</button>
             </div>
             <div class="toggle-container">
                 <button id="button10" data-label="Button 10" onclick="toggleImage('image10')">Button 10</button>
@@ -205,8 +210,9 @@
                 <button id="button16" data-label="Button 16" onclick="toggleImage('image16')">Button 16</button>
             </div>
         </div>
-        
-		<div class="button-group">
+
+
+        <div class="button-group">
             <div class="button-label" style="font-size: 48px;">Forward</div>
             <div class="toggle-container">
                 <button id="button01" data-label="Tomioka to Tatsumi" onclick="toggleImage('image01')">Tomioka to Tatsumi</button>
@@ -245,83 +251,63 @@
     </div>
 
     <script>
-        var scaleFactors = {
-            'initialImage': 1,
-            'image01': 1,
-            'image02': 1,
-            'image03': 1,
-            'image04': 1,
-            'image05': 1,
-            'image06': 1,
-            'image07': 1,
-            'image08': 1,
-            'image09': 1,
-            'image10': 1,
-            'image11': 1,
-            'image12': 1,
-            'image13': 1,
-            'image14': 1,
-            'image15': 1,
-            'image16': 1,
-            'image17': 1,
-            'image18': 1,
-        };
+    var scaleFactors = {
+        'initialImage': 1,
+        'image01': 1,
+        'image02': 1,
+        'image03': 1,
+        'image04': 1,
+        'image05': 1,
+        'image06': 1,
+        'image07': 1,
+        'image08': 1,
+        'image09': 1,
+        'image10': 1,
+        'image11': 1,
+        'image12': 1,
+        'image13': 1,
+        'image14': 1,
+        'image15': 1,
+        'image16': 1,
+        'image17': 1,
+        'image18': 1,
+    };
 
-    // Variable to keep track of the currently activated button
     var currentActivatedButton = null;
 
-    // Ensure the initial image is displayed, and no buttons are active initially
     document.getElementById('initialImage').style.display = 'block';
 
-    for (var i = 1; i <= 18; i++) {
-        var imageId = 'image' + (i < 10 ? '0' : '') + i;
-        var button = document.getElementById('button' + (i < 10 ? '0' : '') + i);
-        document.getElementById(imageId).style.display = 'none';
-        button.style.backgroundColor = 'white';
+    function toggleImage(imageId) {
+        var image = document.getElementById(imageId);
+        var button = document.getElementById('button' + imageId.slice(-2));
+
+        if (currentActivatedButton === imageId) {
+            button.style.backgroundColor = 'white';
+            image.style.display = 'none';
+            currentActivatedButton = null;
+            updateActivatedButtonsLabel([]);
+        } else {
+            if (currentActivatedButton !== null) {
+                var prevButton = document.getElementById('button' + currentActivatedButton.slice(-2));
+                prevButton.style.backgroundColor = 'white';
+                document.getElementById('image' + currentActivatedButton.slice(-2)).style.display = 'none';
+            }
+
+            updateActivatedButtonsLabel([]);
+
+            image.style.display = 'block';
+            button.style.backgroundColor = 'red';
+            currentActivatedButton = imageId;
+
+            var buttonLabel = button.dataset.label || button.textContent;
+            updateActivatedButtonsLabel([buttonLabel]);
+        }
     }
 
-    var currentActivatedButton = null;
-
-	function toggleImage(imageId) {
-		var image = document.getElementById(imageId);
-		var button = document.getElementById('button' + imageId.slice(-2));
-		var activatedButtons = getActivatedButtons();
-
-		if (currentActivatedButton === 'button' + imageId.slice(-2)) {
-			// If the same button is clicked twice, deselect it
-			button.style.backgroundColor = 'white';
-			button.style.color = 'black';
-			image.style.display = 'none';
-			currentActivatedButton = null;
-			updateActivatedButtonsLabel([]); // Clear the label when deselecting
-		} else {
-			// Deactivate the previously activated button
-			if (currentActivatedButton !== null) {
-				var prevButton = document.getElementById(currentActivatedButton);
-				prevButton.style.backgroundColor = 'white';
-				prevButton.style.color = 'black';
-				document.getElementById('image' + currentActivatedButton.slice(-2)).style.display = 'none';
-			}
-
-			// Clear the label before updating with the newly activated buttons
-			updateActivatedButtonsLabel([]);
-
-			// Activate the clicked button
-			image.style.display = 'block';
-			button.style.backgroundColor = 'red';
-			button.style.color = 'white';
-			currentActivatedButton = 'button' + imageId.slice(-2);
-
-			var buttonLabel = button.dataset.label || button.textContent; // Use data-label if available, otherwise use button text
-			updateActivatedButtonsLabel([buttonLabel]);
-		}
-	}
-	 function scaleImage(direction) {
+    function scaleImage(direction) {
         var images = document.querySelectorAll('.image-container img');
-        var buttons = document.querySelectorAll('.toggle-container button');
-        var activatedButtons = getActivatedButtons();
 
-        images.forEach(function (image, index) {
+        images.forEach(function (image) {
             var imageId = image.id;
             var currentScale = scaleFactors[imageId];
             var scaleFactor = direction === 'up' ? 1.02 : 0.98;
@@ -329,44 +315,43 @@
             image.style.transform = 'scale(' + scaleFactors[imageId] + ')';
         });
 
-        updateActivatedButtonsLabel(activatedButtons);
+        updateActivatedButtonsLabel(getActivatedButtons());
     }
 
     function magnify() {
-        // Add your magnification logic here
         alert('Magnifying!');
     }
 
     function getActivatedButtons() {
-		var activatedButtons = [];
-		for (var i = 1; i <= 18; i++) {
-			var imageId = 'image' + (i < 10 ? '0' + i : i);
-			var image = document.getElementById(imageId);
-			var buttonName = document.getElementById('button' + (i < 10 ? '0' + i : i)).textContent;
-			if (image.style.display !== 'none') {
-				activatedButtons.push(buttonName);
-			}
-		}
-		return activatedButtons;
-	}
+        var activatedButtons = [];
+        for (var i = 1; i <= 18; i++) {
+            var imageId = 'image' + (i < 10 ? '0' + i : i);
+            var image = document.getElementById(imageId);
+            var buttonName = document.getElementById('button' + (i < 10 ? '0' + i : i)).textContent;
+            if (image.style.display !== 'none') {
+                activatedButtons.push(buttonName);
+            }
+        }
+        return activatedButtons;
+    }
 
-
-	function updateActivatedButtonsLabel(activatedButtons) {
-		var label = document.getElementById('activatedButtonsLabel');
-		
-		if (activatedButtons.length > 0) {
-			label.textContent = activatedButtons.join(', ');
-		} else {
-			label.textContent = ''; // Clear the label when no buttons are activated
-		}
-	}
-	document.getElementById('button08').style.visibility = 'hidden';
+    function updateActivatedButtonsLabel(activatedButtons) {
+        var label = document.getElementById('activatedButtonsLabel');
+        
+        if (activatedButtons.length > 0) {
+            label.textContent = activatedButtons.join(', ');
+        } else {
+            label.textContent = '';
+        }
+    }
+	
 	document.getElementById('button10').style.visibility = 'hidden';
 	document.getElementById('button12').style.visibility = 'hidden';
 	document.getElementById('button14').style.visibility = 'hidden';
 	document.getElementById('button16').style.visibility = 'hidden';
-	document.getElementById('button18').style.visibility = 'hidden';
+
 </script>
+
 
 
 
