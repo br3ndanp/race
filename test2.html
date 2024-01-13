@@ -152,6 +152,9 @@
 			align-items: right; 
 			z-index: 1; 
 		}
+		.active-button {
+			color: white !important;
+		}
 
     </style>
     <title>NIGHTRUNNERS RACE MAP</title>
@@ -278,45 +281,46 @@
     document.getElementById('initialImage').style.display = 'block';
 
     function toggleImage(imageId) {
-        var image = document.getElementById(imageId);
-        var button = document.getElementById('button' + imageId.slice(-2));
+		var image = document.getElementById(imageId);
+		var button = document.getElementById('button' + imageId.slice(-2));
 
-        if (currentActivatedButton === imageId) {
-            button.style.backgroundColor = 'white';
-            image.style.display = 'none';
-            currentActivatedButton = null;
-            updateActivatedButtonsLabel([]);
-        } else {
-            if (currentActivatedButton !== null) {
-                var prevButton = document.getElementById('button' + currentActivatedButton.slice(-2));
-                prevButton.style.backgroundColor = 'white';
-                document.getElementById('image' + currentActivatedButton.slice(-2)).style.display = 'none';
-            }
+		if (currentActivatedButton === imageId) {
+			button.style.backgroundColor = 'white';
+			button.classList.remove('active-button'); // Remove the active class
+			image.style.display = 'none';
+			currentActivatedButton = null;
+			updateActivatedButtonsLabel([]);
+		} else {
+			if (currentActivatedButton !== null) {
+				var prevButton = document.getElementById('button' + currentActivatedButton.slice(-2));
+				prevButton.style.backgroundColor = 'white';
+				prevButton.classList.remove('active-button'); // Remove the active class
+				document.getElementById('image' + currentActivatedButton.slice(-2)).style.display = 'none';
+			}
 
-            updateActivatedButtonsLabel([]);
+			updateActivatedButtonsLabel([]);
 
-            image.style.display = 'block';
-            button.style.backgroundColor = 'red';
-            currentActivatedButton = imageId;
+			image.style.display = 'block';
+			button.style.backgroundColor = 'red';
+			button.classList.add('active-button'); // Add the active class
+			currentActivatedButton = imageId;
 
-            var buttonLabel = button.dataset.label || button.textContent;
-            updateActivatedButtonsLabel([buttonLabel]);
-        }
+			var buttonLabel = button.dataset.label || button.textContent;
+			updateActivatedButtonsLabel([buttonLabel]);
+		}
+	}
+
+function updateActivatedButtonsLabel(activatedButtons) {
+    var label = document.getElementById('activatedButtonsLabel');
+
+    if (activatedButtons.length > 0) {
+        label.textContent = activatedButtons.join(', ');
+        label.classList.add('active-button'); // Add the active class to the label
+    } else {
+        label.textContent = '';
+        label.classList.remove('active-button'); // Remove the active class from the label
     }
-
-    function scaleImage(direction) {
-        var images = document.querySelectorAll('.image-container img');
-
-        images.forEach(function (image) {
-            var imageId = image.id;
-            var currentScale = scaleFactors[imageId];
-            var scaleFactor = direction === 'up' ? 1.02 : 0.98;
-            scaleFactors[imageId] = currentScale * scaleFactor;
-            image.style.transform = 'scale(' + scaleFactors[imageId] + ')';
-        });
-
-        updateActivatedButtonsLabel(getActivatedButtons());
-    }
+}
 
     function magnify() {
         alert('Magnifying!');
