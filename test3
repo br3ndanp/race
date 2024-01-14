@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Moirai+One&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Tektur&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Extended+Text&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+
+        body {
+            background-color: black;
+            margin: 0;
+            font-size: 24px;
+            font-family: 'Silkscreen', monospace;
+            text-transform: uppercase;
+            color: #00ff00;
+            text-align: center;
+        }
+
+        #loadingScreen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            z-index: 999;
+        }
+
+        .image-container img {
+            display: none;
+        }
+        .image-container {
+            position: relative;
+        }
+
+        .image-container img {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            display: none;
+            width: 100vw;
+            height: auto;
+            transform-origin: top left;
+        }
+
+
+		#initialImage,
+		#image01,
+		#image02,
+		#image03,
+		#image04,
+		#image05,
+		#image06,
+		#image07,
+		#image08,
+		#image09,
+		#image10,
+		#image11,
+		#image12,
+		#image13,
+		#image14,
+		#image15,
+		#image16,
+		#image17,
+		#image18 {
+			width: 67vw;
+		}
+
+		button {
+			width: 220px;
+			height: 66px;
+			margin-top: 10px;
+			font-size: 19px;
+			font-family: 'Press Start 2P', cursive;
+			transition: background-color 0.3s;
+		}
+
+		.top-right-buttons {
+			position: fixed;
+			right: 10px;
+			display: flex;
+			flex-direction: row;
+			z-index: 2;
+		}
+
+		.button-group {
+			margin-right: 10px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			z-index: 2;
+		}
+
+		.toggle-container {
+			display: flex;
+			align-items: center;
+			margin-bottom: 5px;
+			margin-right: 5px;
+			flex-wrap: wrap;
+		}
+
+		.button-label {
+			color: #00ff00;
+			margin-top: 20px;
+			margin-bottom: 0px;
+			font-size: 28px;
+			font-family: 'VT323', monospace;
+		}
+
+		.bottom-right-buttons {
+			position: fixed;
+			bottom: 10px;
+			right: 10px;
+			display: flex;
+			flex-direction: row;
+			align-items: flex-end;
+		}
+
+		#scaleUp,
+		#scaleDown,
+		#magnifyGlass {
+			width: 60px;
+			height: 60px;
+			margin-top: 10px;
+			font-size: 30px;
+			font-weight: bold;
+		}
+
+		#scaleUp {
+			background-color: green;
+			color: white;
+		}
+
+		#scaleDown {
+			background-color: red;
+			color: white;
+		}
+
+		#magnifyGlass {
+			font-size: 42px;
+			color: blue;
+			margin-right: 10px;
+		}
+		.title-label {
+            color: #00ff00;
+            font-size: 80px;
+            font-family: 'Libre Barcode 39 Extended Text', system-ui;
+            position: fixed;
+            top: 10px;
+            left: 35%;
+            transform: translateX(-50%);
+			z-index: 2; 
+        }
+		.activated-buttons-container {
+			position: fixed;
+			top: 70px;
+			left: 35%;
+			transform: translateX(-50%);
+			display: flex;
+			color: #00ff00;
+			font-size: 45px !important;
+			font-family: 'Tektur', sans-serif;
+			text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+			padding: 10px;
+			align-items: right; 
+			z-index: 1; 
+		}
+		#personalBestLabel {
+			color: #00ff00;
+			font-size: 40px;
+			font-family: 'VT323', monospace;
+			position: fixed;
+			top: 130px; /* Adjust the top position accordingly */
+			left: 35%;
+			transform: translateX(-50%);
+			text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+			z-index: 2;
+		}
+		.bottom-right-buttons label,
+        .bottom-right-buttons input,
+        .bottom-right-buttons button {
+            font-family: 'VT323', monospace;
+			font-size: 40px;
+			height: 60px; /* Set the desired height */
+			width: 120px;
+        }
+		#personalBest {
+			height: 54px; /* Set the desired height */
+			width: 120px;
+		}
+		#loadingBarContainer {
+        width: 800px;
+        height: 20px;
+        background-color: #333; /* Background color of the loading bar container */
+        margin-top: 10px;
+		}
+
+		#loadingBar {
+			height: 100%;
+			background-color: #00ff00; /* Color of the loading bar */
+			width: 800px; /* Initial width is 0% */
+		}
+		.text-logo {
+			color: #00ff00;
+			font-size: 150px;
+			font-family: "Moirai One", system-ui;
+			margin-bottom: 20px;
+		}
+		.ascii-art {
+			color: #00ff00;
+			font-family: 'Libre Barcode 39 Extended Text', system-ui;
+			white-space: pre-wrap;
+			font-size: 20px;
+		}
+
+
+    </style>
+    <title>NIGHTRUNNERS RACE MAP</title>
+</head>
+
+<body>
+	<div id="loadingScreen">
+		<div id="welcomeMessage">
+			<div class="text-logo">NIGHT-RUNNERS</div>
+			Welcome <span id="userNameSpan"></span>, to the Night-Runners app
+		</div>
+		<div id="loadingBarContainer">
+			<div id="loadingBar"></div>
+		</div>
+	</div>
+
+
+	<div class="title-label">NIGHT-RUNNERS RACE MAP</div>
+
+    <div class="image-container">
+        <img id="initialImage" src="https://i.redd.it/qrqnb9wr91bc1.jpeg" alt="Big Map">
+        <img id="image01" src="https://i.imgur.com/VqgKcIQ.png" alt="Tomioka to Tatsumi">
+        <img id="image02" src="https://i.imgur.com/itQFFxZ.png" alt="Kiba to Ariake">
+        <img id="image03" src="https://i.imgur.com/XSr6njM.png" alt="Koto City Loop">
+        <img id="image04" src="https://i.imgur.com/jkTOYNl.png" alt="Way Out East">
+        <img id="image05" src="https://i.imgur.com/2fJ5RuE.png" alt="Arakawa Bridge to Kiba East">
+        <img id="image06" src="https://i.imgur.com/GW2rbiy.png" alt="Tunnel Rats Reverse">
+        <img id="image07" src="https://i.imgur.com/ScSMBI7.png" alt="Toyosu to Sumida Connection<">
+        <img id="image08" src="https://i.imgur.com/27acAX5.png" alt="Arakawa Drag">
+        <img id="image09" src="https://i.imgur.com/wOO31Ls.png" alt="Yumenoshima P. to Kiba Tunnel">
+        <img id="image10" src="https://i.imgur.com/JBuIXlW.png" alt="Kiba Tunnel Drag">
+        <img id="image11" src="https://i.imgur.com/JIKFzQY.png" alt="Tunnel Rats">
+        <img id="image12" src="https://i.imgur.com/Gj50Lkg.png" alt="Tatsumi Drag">
+        <img id="image13" src="https://i.imgur.com/xtnOhFw.png" alt="Toyosu to Tomioka">
+        <img id="image14" src="https://i.imgur.com/wGeF3Sh.png" alt="Toyosu Tunnel Drag">
+        <img id="image15" src="https://i.imgur.com/HinA1GO.png" alt="Tomioka Dash">
+        <img id="image16" src="https://via.placeholder.com/800x600" alt="Image 16">
+    </div>
+
+    <div class="top-right-buttons">
+        <div class="button-group">
+            <div class="button-label" style="font-size: 48px;">Reverse</div>
+            <div class="toggle-container">
+                <button id="button04" data-label="Way Out East" onclick="toggleImage('image04')">Way Out East</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button06" data-label="Tunnel Rats Reverse" onclick="toggleImage('image06')">Tunnel Rats</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button02" data-label="Kiba to Ariake" onclick="toggleImage('image02')">Kiba to Ariake</button>
+            </div>
+			<div class="button-label" style="font-size: 48px; margin: 16px">Drag</div>
+            <div class="toggle-container">
+                <button id="button08" data-label="Arakawa Bridge" onclick="toggleImage('image08')">Arakawa Bridge</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button10" data-label="Kiba Tunnel Drag" onclick="toggleImage('image10')">Kiba Tunnel</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button12" data-label="Tatsumi Drag" onclick="toggleImage('image12')">Tatsumi</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button14" data-label="Toyosu Tunnel Drag" onclick="toggleImage('image14')">Toyosu Tunnel</button>
+            </div>
+			<div style="bottom: 60px; right: 10px; position: fixed;">
+				<label id="personalBestLabel"></label>
+			</div>
+        </div>
+
+
+        <div class="button-group">
+            <div class="button-label" style="font-size: 48px;">Forward</div>
+			<div class="toggle-container">
+                <button id="button03" data-label="Koto City Loop" onclick="toggleImage('image03')">Koto City Loop</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button11" data-label="Tunnel Rats" onclick="toggleImage('image11')">Tunnel Rats</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button15" data-label="Tomioka Dash" onclick="toggleImage('image15')">Tomioka Dash</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button07" data-label="Toyosu to Sumida Connection" onclick="toggleImage('image07')">Toyosu to Sumida Connection</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button05" data-label="Arakawa Bridge to Kiba East" onclick="toggleImage('image05')">Arakawa Bridge to Kiba East</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button09" data-label="Yumenoshima P. to Kiba Tunnel" onclick="toggleImage('image09')">Yumenoshima P. to Kiba Tunnel</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button01" data-label="Tomioka to Tatsumi" onclick="toggleImage('image01')">Tomioka to Tatsumi</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button13" data-label="Toyosu to Tomioka" onclick="toggleImage('image13')">Toyosu to Tomioka</button>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <div class="activated-buttons-container" id="activatedButtonsLabel" style="font-size: 36px;"> </div>
+
+   <div class="bottom-right-buttons">
+        <div id="magnifyGlass" onclick="magnify()">🔍</div>
+		<button id="scaleUp" onclick="scaleImage('up')">+</button>
+        <button id="scaleDown" onclick="scaleImage('down')">-</button>
+    </div>
+	
+	 <div class="bottom-right-buttons" style="bottom: 100px; right: 10px;">
+		<label for="personalBest"> </label>
+		<input type="text" id="personalBest" placeholder="0:00.00" pattern="[0-5]?[0-9]:[0-5][0-9]\.\d{2,3}" title="Enter time in mm:ss.ms format">
+		<button id="personalBestButton" onclick="submitPersonalBest()">Submit</button>
+		<button onclick="clearPersonalBest()">Clear</button> <!-- New button -->
+	</div>
+
+	
+
+
+    <!-- Display personal best time as a label -->
+    <div id="personalBestLabel" class="bottom-right-buttons" style="bottom: 60px; right: 10px;"></div>
+
+
+
+	<script>
+		var scaleFactors = {
+			'initialImage': 1,
+			'image01': 1,
+			'image02': 1,
+			'image03': 1,
+			'image04': 1,
+			'image05': 1,
+			'image06': 1,
+			'image07': 1,
+			'image08': 1,
+			'image09': 1,
+			'image10': 1,
+			'image11': 1,
+			'image12': 1,
+			'image13': 1,
+			'image14': 1,
+			'image15': 1,
+			'image16': 1,
+			'image17': 1,
+			'image18': 1,
+		};
+
+		var personalBestTimes = getStoredTimes(); // Load times from local storage
+		var currentActivatedButton = null;
+
+		document.getElementById('initialImage').style.display = 'block';
+        var loadingBar = document.getElementById('loadingBar');
+        var loadingPercentage = 10;
+
+        // Update loading bar every 100 milliseconds until it reaches 100%
+        var loadingInterval = setInterval(function () {
+            loadingPercentage += 4;
+            loadingBar.style.width = loadingPercentage + '%';
+
+            if (loadingPercentage >= 95) {
+                clearInterval(loadingInterval); // Stop updating loading bar
+                document.getElementById('loadingScreen').style.display = 'none';
+
+                // Display only the initial image after the loading screen disappears
+                var images = document.querySelectorAll('.image-container img');
+                images.forEach(function (image) {
+                    if (image.id !== 'initialImage') {
+                        image.style.display = 'none';
+                    }
+                });
+            }
+        }, 100);
+		
+	// Function to toggle image visibility
+	function toggleImage(imageId) {
+		var image = document.getElementById(imageId);
+		var button = document.getElementById('button' + imageId.slice(-2));
+		var personalBestLabel = document.getElementById('personalBestLabel');
+
+		if (currentActivatedButton === imageId) {
+			button.style.backgroundColor = 'white';
+			button.style.color = 'black';
+			image.style.display = 'none';
+			currentActivatedButton = null;
+			updateActivatedButtonsLabel([]);
+			updatePersonalBestLabel(); // Always update personal best label when toggling off a button
+		} else {
+			// Check if there was a previously activated button
+			if (currentActivatedButton !== null) {
+				var prevButton = document.getElementById('button' + currentActivatedButton.slice(-2));
+				prevButton.style.backgroundColor = 'white';
+				prevButton.style.color = 'black';
+				document.getElementById('image' + currentActivatedButton.slice(-2)).style.display = 'none';
+			}
+
+			updateActivatedButtonsLabel([]);
+
+			image.style.display = 'block';
+			button.style.backgroundColor = 'lime';
+			button.style.color = 'green';
+			currentActivatedButton = imageId;
+
+			var buttonLabel = button.dataset.label || button.textContent;
+			updateActivatedButtonsLabel([buttonLabel]);
+			updatePersonalBestLabel(); // Always update personal best label when toggling on a button
+		}
+	}
+
+
+
+
+
+
+
+
+    function scaleImage(direction) {
+        var images = document.querySelectorAll('.image-container img');
+
+        images.forEach(function (image) {
+            var imageId = image.id;
+            var currentScale = scaleFactors[imageId];
+            var scaleFactor = direction === 'up' ? 1.02 : 0.98;
+            scaleFactors[imageId] = currentScale * scaleFactor;
+            image.style.transform = 'scale(' + scaleFactors[imageId] + ')';
+        });
+
+        updateActivatedButtonsLabel(getActivatedButtons());
+    }
+
+
+    function getActivatedButtons() {
+        var activatedButtons = [];
+        for (var i = 1; i <= 18; i++) {
+            var imageId = 'image' + (i < 10 ? '0' + i : i);
+            var image = document.getElementById(imageId);
+            var buttonName = document.getElementById('button' + (i < 10 ? '0' + i : i)).textContent;
+            if (image.style.display !== 'none') {
+                activatedButtons.push(buttonName);
+            }
+        }
+        return activatedButtons;
+    }
+
+   
+	var magnifyClickCount = 0;
+    var timeoutDuration = 3000; // 3000 milliseconds (3 seconds)
+
+	function magnify() {
+        magnifyClickCount++;
+
+        if (magnifyClickCount % 2 === 1) {
+            personalBestLabel.textContent = 'Click again to change your user name';
+			activatedButtonsLabel.textContent = '';
+
+            // Set a timeout to reset the click count after the specified duration
+            setTimeout(function () {
+                magnifyClickCount = 0;
+            }, timeoutDuration);
+        } else {
+            clearUserName();
+            magnifyClickCount = 0; // Reset the click count after forgetting the user name
+        }
+    }
+	
+
+// Function to submit personal best time
+	function submitPersonalBest() {
+		var personalBestInput = document.getElementById('personalBest');
+		var enteredTime = personalBestInput.value;
+
+		var personalBestLabel = document.getElementById('personalBestLabel');
+		var activatedButtonsLabel = document.getElementById('activatedButtonsLabel');
+
+		if (currentActivatedButton !== null) {
+			if (validateTimeInput(enteredTime)) {
+				personalBestTimes[currentActivatedButton] = enteredTime;
+				updatePersonalBestLabel();
+				saveTimesToStorage(); // Save times to local storage
+			} else {
+				personalBestLabel.textContent = 'Error 4: Time must be in mm:ss.ms format';
+			}
+		} else {
+			personalBestLabel.textContent = 'Error 3: No map is currently selected.';
+			activatedButtonsLabel.textContent = ''; // Clear activatedButtonsLabel
+
+			// Clear the error message after a timeout (e.g., 3000 milliseconds)
+			setTimeout(function () {
+				activatedButtonsLabel.textContent = userName !== 'Racer' ? 'Hello' : '';
+				personalBestLabel.textContent = userName !== 'Racer' ? userName : '';
+			}, 3000);
+		}
+	}
+
+	// Function to update the personal best label
+	function updatePersonalBestLabel() {
+		var personalBestLabel = document.getElementById('personalBestLabel');
+
+		if (currentActivatedButton !== null) {
+			var buttonLabel = getButtonLabel(currentActivatedButton);
+
+			if (personalBestTimes[currentActivatedButton] !== null && personalBestTimes[currentActivatedButton] !== undefined) {
+				personalBestLabel.textContent = 'BEST: ' + personalBestTimes[currentActivatedButton];
+			} else {
+				personalBestLabel.textContent = 'Best: Not Found';
+			}
+		} else {
+			// Updated to always show the user name in personalBestLabel
+			personalBestLabel.textContent = userName !== 'Racer' || activatedButtons.length > 0 ? '' + userName : '';
+		}
+	}
+
+	// Function to validate time input
+	function validateTimeInput(enteredTime) {
+		var timeRegex = /^[0-5]?[0-9]:[0-5][0-9]\.\d{2,3}$/;
+		return timeRegex.test(enteredTime);
+	}
+
+	function getButtonLabel(imageId) {
+		var button = document.getElementById('button' + imageId.slice(-2));
+		return button.dataset.label || button.textContent;
+	}
+
+	function saveTimesToStorage() {
+		localStorage.setItem('personalBestTimes', JSON.stringify(personalBestTimes));
+	}
+
+	function getStoredTimes() {
+		var storedTimes = localStorage.getItem('personalBestTimes');
+		return storedTimes ? JSON.parse(storedTimes) : {};
+	}
+
+	// Load personal best times on page load
+	window.onload = function () {
+		personalBestTimes = getStoredTimes();
+
+		// Log the loaded personal best times to the console
+		console.log('Loaded Personal Best Times:', personalBestTimes);
+
+		// Check if there is an activated button, and if so, update the label
+		if (currentActivatedButton !== null) {
+			updatePersonalBestLabel();
+		}
+	};
+
+        function clearPersonalBest() {
+			var personalBestLabel = document.getElementById('personalBestLabel');
+			if (currentActivatedButton !== null) {
+				personalBestTimes[currentActivatedButton] = null;
+				updatePersonalBestLabel();
+				saveTimesToStorage(); // Save times to local storage
+			} else {
+				personalBestLabel.textContent = 'Error 2: No map is currently selected.';
+				activatedButtonsLabel.textContent = '';
+
+				setTimeout(function () {
+					activatedButtonsLabel.textContent = userName !== 'Racer' ? 'Hello' : '';
+					personalBestLabel.textContent = userName !== 'Racer' ? userName : '';
+
+				}, 3000);
+			}
+		}
+
+		function getUserName() {
+            var storedName = localStorage.getItem('userName');
+            return storedName ? storedName : prompt('Please enter your name:') || 'Racer';
+        }
+
+        var userName = getUserName(); // Get user's name when the page loads
+
+        // Save user's name to localStorage
+        localStorage.setItem('userName', userName);
+
+		// Display welcome message on the personal best label
+        var personalBestLabel = document.getElementById('personalBestLabel');
+		activatedButtonsLabel.textContent = 'Hello';
+		personalBestLabel.textContent = '' + userName;
+	
+	function clearUserName() {
+        localStorage.removeItem('userName');
+        personalBestLabel.textContent = 'User name has been forgotten. Please refresh the page.';
+    }
+	function updateActivatedButtonsLabel(activatedButtons) {
+		var label = document.getElementById('activatedButtonsLabel');
+		var personalBestLabel = document.getElementById('personalBestLabel');
+
+		if (activatedButtons.length > 0) {
+			label.textContent = activatedButtons.join(', ');
+		} else {
+			label.textContent = userName !== 'Racer' ? 'Hello' : '';
+		}
+
+		personalBestLabel.textContent = userName !== 'Racer' && activatedButtons.length > 0 ? userName : '';
+	}
+
+	 var userName = getUserName(); // Get user's name when the page loads
+	document.getElementById('userNameSpan').textContent = userName; // Set user name in the welcome message
+	</script>
+
+
+
+
+</body>
+
+</html>
