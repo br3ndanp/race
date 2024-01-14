@@ -263,8 +263,36 @@
         <img id="image15" src="https://i.imgur.com/HinA1GO.png" alt="Tomioka Dash">
         <img id="image16" src="https://via.placeholder.com/800x600" alt="Image 16">
     </div>
+	
 
     <div class="top-right-buttons">
+		<div class="button-group">
+            <div class="button-label" style="font-size: 48px;">Forward</div>
+			<div class="toggle-container">
+                <button id="button03" data-label="Koto City Loop" onclick="toggleImage('image03')">Koto City Loop</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button11" data-label="Tunnel Rats" onclick="toggleImage('image11')">Tunnel Rats</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button15" data-label="Tomioka Dash" onclick="toggleImage('image15')">Tomioka Dash</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button07" data-label="Toyosu to Sumida Connection" onclick="toggleImage('image07')">Toyosu to Sumida Connection</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button05" data-label="Arakawa Bridge to Kiba East" onclick="toggleImage('image05')">Arakawa Bridge to Kiba East</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button09" data-label="Yumenoshima P. to Kiba Tunnel" onclick="toggleImage('image09')">Yumenoshima P. to Kiba Tunnel</button>
+            </div>
+			<div class="toggle-container">
+                <button id="button01" data-label="Tomioka to Tatsumi" onclick="toggleImage('image01')">Tomioka to Tatsumi</button>
+            </div>
+            <div class="toggle-container">
+                <button id="button13" data-label="Toyosu to Tomioka" onclick="toggleImage('image13')">Toyosu to Tomioka</button>
+            </div>
+        </div>
         <div class="button-group">
             <div class="button-label" style="font-size: 48px;">Reverse</div>
             <div class="toggle-container">
@@ -295,34 +323,7 @@
         </div>
 
 
-        <div class="button-group">
-            <div class="button-label" style="font-size: 48px;">Forward</div>
-			<div class="toggle-container">
-                <button id="button03" data-label="Koto City Loop" onclick="toggleImage('image03')">Koto City Loop</button>
-            </div>
-			<div class="toggle-container">
-                <button id="button11" data-label="Tunnel Rats" onclick="toggleImage('image11')">Tunnel Rats</button>
-            </div>
-			<div class="toggle-container">
-                <button id="button15" data-label="Tomioka Dash" onclick="toggleImage('image15')">Tomioka Dash</button>
-            </div>
-			<div class="toggle-container">
-                <button id="button07" data-label="Toyosu to Sumida Connection" onclick="toggleImage('image07')">Toyosu to Sumida Connection</button>
-            </div>
-            <div class="toggle-container">
-                <button id="button05" data-label="Arakawa Bridge to Kiba East" onclick="toggleImage('image05')">Arakawa Bridge to Kiba East</button>
-            </div>
-			<div class="toggle-container">
-                <button id="button09" data-label="Yumenoshima P. to Kiba Tunnel" onclick="toggleImage('image09')">Yumenoshima P. to Kiba Tunnel</button>
-            </div>
-			<div class="toggle-container">
-                <button id="button01" data-label="Tomioka to Tatsumi" onclick="toggleImage('image01')">Tomioka to Tatsumi</button>
-            </div>
-            <div class="toggle-container">
-                <button id="button13" data-label="Toyosu to Tomioka" onclick="toggleImage('image13')">Toyosu to Tomioka</button>
-            </div>
-            
-        </div>
+        
 
     </div>
 
@@ -482,7 +483,8 @@
             // Set a timeout to reset the click count after the specified duration
             setTimeout(function () {
                 magnifyClickCount = 0;
-            }, timeoutDuration);
+				personalBestLabel.textContent = '';
+            }, timeoutDuration)	
         } else {
             clearUserName();
             magnifyClickCount = 0; // Reset the click count after forgetting the user name
